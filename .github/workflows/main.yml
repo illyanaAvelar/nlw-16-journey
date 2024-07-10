@@ -28,3 +28,9 @@ jobs:
 
       - name: Build docker image
         run: docker build -t illyana/nlw-16-journey:${{ steps.generate_sha.outputs.sha }} .
+
+      - name: Push image
+        run: |
+          docker push illyana/nlw-16-journey:${{ steps.generate_sha.outputs.sha }}
+          docker tag illyana/nlw-16-journey:${{ steps.generate_sha.outputs.sha }} illyana/nlw-16-journey:latest
+          docker push illyana/nlw-16-journey:latest
