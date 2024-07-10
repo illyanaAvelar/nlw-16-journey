@@ -26,11 +26,11 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build docker image
-        run: docker build -t illyana/nlw-16-journey:${{ steps.generate_sha.outputs.sha }} .
-
-      - name: Push image
-        run: |
-          docker push illyana/nlw-16-journey:${{ steps.generate_sha.outputs.sha }}
-          docker tag illyana/nlw-16-journey:${{ steps.generate_sha.outputs.sha }} illyana/nlw-16-journey:latest
-          docker push illyana/nlw-16-journey:latest
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            illyana/nlw-16-journey:${{ steps.generate_sha.outputs.sha }}
+            illyana/nlw-16-journey:latest
