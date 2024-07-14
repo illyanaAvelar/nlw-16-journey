@@ -9,5 +9,5 @@ metadata:
 
 stringData:
   type: git
-  url:
+  url: git@github.com:illyanaAvelar/nlw-16-journey.git
   sshPrivateKey: |

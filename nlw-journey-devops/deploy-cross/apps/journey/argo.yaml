@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: ''
+    repoURL: git@github.com:illyanaAvelar/nlw-16-journey.git
     targetRevision: HEAD
     path: deploy
   destination:
