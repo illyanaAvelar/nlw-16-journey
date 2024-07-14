@@ -42,3 +42,15 @@ jobs:
           tags: |
             illyana/nlw-16-journey:${{ steps.generate_sha.outputs.sha }}
             illyana/nlw-16-journey:latest
+
+      - name: Update image helm
+        uses: fjogeleit/yaml-update-action@main
+        with:
+          branch: release
+          targetBranch: main
+          createPR: true
+          valueFile: "deploy/values.yaml"
+          propertyPath: "image.tag"
+          value: ${{ steps.generate_sha.outputs.sha }}
+          commitChange: true
+          message: "[skip ci] Update tag in values helm"
